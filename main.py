@@ -34,7 +34,6 @@ def visualize_binary_tree(root):
                 edges.append(((x,y), (x+x_off, y + 2 * y_step)))
                 calculate_positions(node.right, x+x_off, y + 2*  y_step, x_off // 2, y_step)
     
-    calculate_positions(root, WIDTH // 2, 50, WIDTH // 4, 75)
 
         
     pygame.display.set_caption("Binary Tree Visualizer")
@@ -44,17 +43,23 @@ def visualize_binary_tree(root):
         for event in pygame.event.get():
             if(event.type == pygame.QUIT):
                 exit= True
-            if event.type == pygame.KEYDOWN:
-                if(event.key == pygame.K_SPACE):
-                    user_input = ""
-                    while user_input != "I" and user_input != "D":
-                        user_input = input("Press I to insert or D to delete: ").strip().upper()
-                        print("You entered:", user_input)
+            if(event.type == pygame.KEYDOWN):
+                if event.key == pygame.K_i:
+                    user_input = input("Enter a value to insert: ").strip()
+                    if user_input.isdigit():  
+                        if int(user_input) > 999:
+                            print("Value too large. Operation canceled.")
+                            user_input = ""
+                            break
+                        else:
+                            root = insert(root, int(user_input))
+                            calculate_positions(root, WIDTH // 2, 50, WIDTH // 4, 75)
 
-                    if user_input == "I":
-                        print("Insert operation selected.")
-                    elif user_input == "D":
-                        print("Delete operation selected.")
+                    else:
+                        print("Invalid input. Please enter a numeric value.")
+                        user_input = ""  
+                if event.key == pygame.K_d:
+                    print("Delete operation selected.")
 
         for start, end in edges:
             pygame.draw.line(canvas, edge_color, start, end, 2)
@@ -110,7 +115,7 @@ def get_min_value(root):
     return root
 
 root = None
-keys = [5, 3, 7, 2, 4, 6, 8, 9]
+keys = []
 for key in keys:
     root = insert(root, key)
     
