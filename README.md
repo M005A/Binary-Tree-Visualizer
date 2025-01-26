@@ -14,16 +14,8 @@ Press:
 I to enter insert mode. Type a numeric value and press Enter to add the value to the tree.
 D to enter delete mode. Type a numeric value and press Enter to remove it from the tree.
 Watch as the tree structure updates instantly!
-Requirements
+
+#Requirements
 Python 3.x
 Pygame: Install via pip install pygame
 
-Clone the repository:
-git clone https://github.com/<your-username>/binary-tree-visualizer.git
-cd binary-tree-visualizer
-
-Install dependencies:
-pip install pygame
-
-Run the script:
-python binary_tree_visualizer.py
