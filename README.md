@@ -15,7 +15,7 @@ I to enter insert mode. Type a numeric value and press Enter to add the value to
 D to enter delete mode. Type a numeric value and press Enter to remove it from the tree.
 Watch as the tree structure updates instantly!
 
-#Requirements
+# Requirements
 Python 3.x
 Pygame: Install via pip install pygame
 
